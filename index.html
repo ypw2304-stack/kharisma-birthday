@@ -874,9 +874,9 @@ left:0;
 
 width:100%;
 
-height:100%;
+height:auto;
 
-display:flex;
+display:block;
 
 justify-content:center;
 
@@ -1191,54 +1191,56 @@ Stay amazing.
 </div>
 
 </div>
+<!-- Musik -->
+<audio id="bgm" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+</audio>
 
 <script>
+document.addEventListener("click", function () {
+    document.getElementById("bgm").play();
+}, { once: true });
+</script>
 
-setTimeout(()=>{
+<script>
+setTimeout(() => {
 
 document
-
 .getElementById('popup')
-
 .classList.add('show');
 
-},2000);
+}, 2000);
 
-function closePopup(){
+function closePopup() {
 
 document
-
 .getElementById('popup')
-
 .classList.remove('show');
 
 }
 
-let index=0;
+let index = 0;
 
-const track=
-
+const track =
 document.getElementById('track');
 
-const total=
-
+const total =
 track.children.length;
 
-setInterval(()=>{
+setInterval(() => {
 
 index++;
 
-if(index>=total){
+if (index >= total) {
 
-index=0;
+index = 0;
 
 }
 
-track.style.transform=
-
+track.style.transform =
 `translateX(-${index*100}%)`;
 
-},3500);
+}, 3500);
 
 </script>
 
