@@ -10,7 +10,7 @@
 
 <style>
 
-/* 🌙 BACKGROUND NIGHT SKY */
+/* 🌙 BACKGROUND */
 body{
 margin:0;
 font-family:'Cormorant Garamond',serif;
@@ -23,7 +23,7 @@ background: radial-gradient(circle at top,
 #05060f 100%);
 }
 
-/* glowing aurora */
+/* glow aurora */
 body::before{
 content:"";
 position:fixed;
@@ -85,7 +85,7 @@ margin-bottom:30px;
 text-align:center;
 }
 
-/* SLIDER (FIX FOTO TIDAK KE POTONG) */
+/* SLIDER */
 .slider{
 width:100%;
 max-width:850px;
@@ -102,7 +102,7 @@ transition:1s ease;
 width:100%;
 height:520px;
 flex-shrink:0;
-object-fit:contain;   /* 🔥 FIX UTAMA: tidak kepotong */
+object-fit:contain;
 background:#000;
 border-radius:20px;
 }
@@ -133,17 +133,21 @@ font-size:70px;
 color:#D4AF37;
 }
 
-/* POPUP */
+/* POPUP FIX FINAL */
 .popup{
 position:fixed;
 inset:0;
 display:flex;
 justify-content:center;
 align-items:center;
-background:rgba(0,0,0,.9);
+
+/* soft, tidak nutup total */
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(6px);
+
 opacity:0;
 visibility:hidden;
-transition:.7s;
+transition:.6s ease;
 z-index:9999;
 }
 
@@ -153,11 +157,22 @@ visibility:visible;
 }
 
 .popup-box{
-background:#111;
+background:rgba(17,17,17,.85);
 padding:40px;
 border-radius:20px;
 text-align:center;
 border:1px solid #D4AF37;
+max-width:500px;
+width:90%;
+position:relative;
+}
+
+.close{
+position:absolute;
+top:10px;
+right:15px;
+font-size:24px;
+cursor:pointer;
 }
 
 /* MUSIC */
@@ -211,7 +226,7 @@ audio{display:none;}
 </div>
 </section>
 
-<!-- LETTER (FULL + SEMESTA + INSPIRASI) -->
+<!-- LETTER -->
 <section>
 <div class="title">💌 A Letter For You</div>
 
@@ -221,16 +236,12 @@ Untuk Kak Kharisma,<br><br>
 
 Di antara luasnya semesta, kamu adalah salah satu bukti bahwa hal indah benar-benar diciptakan dengan penuh makna.<br><br>
 
-Kamu mungkin tidak selalu menyadarinya, tapi keberadaanmu sudah menjadi cahaya bagi banyak orang di sekitarmu. Cara kamu bersikap, cara kamu bertahan, dan cara kamu tetap lembut di dunia yang tidak selalu mudah—itu semua menginspirasi lebih banyak orang daripada yang bisa kamu bayangkan.<br><br>
+Kamu menjadi cahaya bagi banyak orang tanpa harus berusaha menjadi siapa pun selain dirimu sendiri.<br>
+Semesta seperti sedang berkata bahwa tidak semua bintang harus paling terang untuk berarti—cukup hadir, dan sudah membuat langit lebih indah.<br><br>
 
-Semesta seperti sedang mengajarkan bahwa tidak semua bintang harus bersinar paling terang untuk bisa berarti. Ada bintang yang cukup hadir saja, dan sudah membuat langit terasa lebih hidup—seperti kamu.<br><br>
+Semoga kamu selalu diberi jalan yang lembut, hati yang kuat, dan hidup yang pelan-pelan selalu menemukan kebaikannya sendiri.<br><br>
 
-Semoga kamu selalu diberi jalan yang tenang, hati yang kuat, dan mimpi yang pelan-pelan menjadi nyata tanpa harus terburu-buru.<br><br>
-
-Dan ketika kamu merasa lelah, ingatlah bahwa bahkan semesta pun punya jeda malam sebelum kembali menghadirkan pagi yang baru.<br><br>
-
-Terima kasih sudah menjadi bagian dari dunia ini.<br>
-Terima kasih sudah menginspirasi banyak orang tanpa harus berusaha menjadi siapa pun selain dirimu sendiri.<br><br>
+Terima kasih sudah menginspirasi banyak orang.<br><br>
 
 ❤️✨ Selamat ulang tahun.
 </p>
@@ -246,12 +257,13 @@ Terima kasih sudah menginspirasi banyak orang tanpa harus berusaha menjadi siapa
 <!-- POPUP -->
 <div class="popup" id="popup">
 <div class="popup-box">
+<div class="close" onclick="closePopup()">✕</div>
 <h2>🎂 Happy Birthday</h2>
 <p>Kak Kharisma Kaur ❤️</p>
 </div>
 </div>
 
-<!-- MUSIC (AUTO + FALLBACK IOS) -->
+<!-- MUSIC -->
 <audio id="bgm" loop preload="auto">
 <source src="musik.mp3" type="audio/mpeg">
 </audio>
@@ -263,6 +275,17 @@ setTimeout(()=>{
 document.getElementById("popup").classList.add("show");
 },2000);
 
+function closePopup(){
+document.getElementById("popup").classList.remove("show");
+}
+
+/* klik luar popup untuk close */
+document.getElementById("popup").addEventListener("click",(e)=>{
+if(e.target.id==="popup"){
+closePopup();
+}
+});
+
 /* SLIDER */
 let i=0;
 const track=document.getElementById("track");
@@ -272,7 +295,7 @@ i=(i+1)%track.children.length;
 track.style.transform=`translateX(-${i*100}%)`;
 },3500);
 
-/* 🎵 AUTO MUSIC (iOS SAFE TRICK) */
+/* 🎵 MUSIC AUTO (iOS SAFE) */
 const audio=document.getElementById("bgm");
 
 function playMusic(){
@@ -287,10 +310,7 @@ if(v>=1) clearInterval(fade);
 }).catch(()=>{});
 }
 
-/* coba autoplay */
 window.addEventListener("load",playMusic);
-
-/* fallback iOS (WAJIB) */
 document.addEventListener("touchstart",playMusic,{once:true});
 document.addEventListener("click",playMusic,{once:true});
 document.addEventListener("scroll",playMusic,{once:true});
