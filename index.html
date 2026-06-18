@@ -1,1249 +1,301 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Happy 23rd Birthday | Kak Kharisma Kaur</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Happy 23rd Birthday</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
+/* 🌙 BACKGROUND NIGHT SKY */
 body{
-
-background:#080808;
-
+margin:0;
 font-family:'Cormorant Garamond',serif;
-
 color:white;
-
 overflow-x:hidden;
+
+background: radial-gradient(circle at top,
+#1b2140 0%,
+#0b0f1f 45%,
+#05060f 100%);
 }
 
-/* Background */
-
-.stars{
-
+/* glowing aurora */
+body::before{
+content:"";
 position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
+inset:0;
 background:
-radial-gradient(circle,#fff 1px,transparent 1px);
-
-background-size:45px 45px;
-
-opacity:.15;
-
+radial-gradient(circle at 20% 20%, rgba(120,120,255,.18), transparent 50%),
+radial-gradient(circle at 80% 70%, rgba(255,150,255,.10), transparent 55%);
+animation:moveGlow 10s infinite alternate;
 pointer-events:none;
-
-animation:move 120s linear infinite;
 }
 
-@keyframes move{
-
-100%{
-transform:translateY(-1000px);
+@keyframes moveGlow{
+from{transform:scale(1);}
+to{transform:scale(1.1) translateY(-10px);}
 }
 
-}
-
-/* Hero */
-
+/* HERO */
 .hero{
-
 height:100vh;
-
 display:flex;
-
-justify-content:center;
-
-align-items:center;
-
 flex-direction:column;
-
-padding:30px;
-
+justify-content:center;
+align-items:center;
 text-align:center;
+padding:20px;
 }
 
 .hero h1{
-
-font-size:80px;
-
-letter-spacing:8px;
-
+font-size:55px;
 color:#D4AF37;
+letter-spacing:5px;
 }
 
 .hero h2{
-
-font-size:90px;
-
+font-size:70px;
 font-family:'Great Vibes';
-
-margin:25px 0;
+margin:20px 0;
 }
 
 .hero p{
-
-font-size:28px;
-
-max-width:900px;
-
-line-height:1.8;
+font-size:20px;
+color:#ddd;
 }
 
-/* Section */
-
+/* SECTION */
 section{
-
 min-height:100vh;
-
 display:flex;
-
-justify-content:center;
-
-align-items:center;
-
 flex-direction:column;
-
-padding:60px;
+justify-content:center;
+align-items:center;
+padding:50px 20px;
 }
 
 .title{
-
-font-size:70px;
-
+font-size:42px;
 color:#D4AF37;
-
-margin-bottom:40px;
-}
-
-/* Timeline */
-
-.timeline{
-
-max-width:900px;
-
-font-size:32px;
-
-line-height:2;
-
+margin-bottom:30px;
 text-align:center;
 }
 
-/* Slider */
-
+/* SLIDER (FIX FOTO TIDAK KE POTONG) */
 .slider{
-
 width:100%;
-
-max-width:1000px;
-
+max-width:850px;
 overflow:hidden;
+border-radius:20px;
 }
 
 .track{
-
 display:flex;
-
-transition:1s;
+transition:1s ease;
 }
 
 .track img{
-
 width:100%;
-
-height:650px;
-
+height:520px;
 flex-shrink:0;
-
-object-fit:cover;
-
-border-radius:25px;
+object-fit:contain;   /* 🔥 FIX UTAMA: tidak kepotong */
+background:#000;
+border-radius:20px;
 }
 
-/* Letter */
-
-.letter{
-
-max-width:1000px;
-
-padding:60px;
-
-background:#111;
-
-border-radius:30px;
-
-border:1px solid #D4AF37;
-}
-
-.letter p{
-
-font-size:30px;
-
-line-height:2;
-}
-
-/* Footer */
-
-footer{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-text-align:center;
-
+/* LETTER */
+.box{
+max-width:850px;
+background:rgba(0,0,0,.4);
+backdrop-filter:blur(10px);
 padding:40px;
+border-radius:20px;
+border:1px solid rgba(212,175,55,.4);
 }
 
-footer h1{
+.box p{
+font-size:20px;
+line-height:1.9;
+}
 
-font-size:120px;
+/* FOOTER */
+.footer{
+text-align:center;
+padding:80px 20px;
+}
 
+.footer h1{
+font-size:70px;
 color:#D4AF37;
 }
 
-footer p{
-
-font-size:40px;
-
-margin-top:30px;
-}
-
-/* Popup */
-
+/* POPUP */
 .popup{
-
 position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:100%;
-
+inset:0;
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-background:rgba(0,0,0,.95);
-
-z-index:9999;
-
+background:rgba(0,0,0,.9);
 opacity:0;
-
 visibility:hidden;
-
 transition:.7s;
+z-index:9999;
 }
 
 .popup.show{
-
 opacity:1;
-
 visibility:visible;
 }
 
 .popup-box{
-
-max-width:800px;
-
-width:90%;
-
 background:#111;
-
-padding:60px;
-
-border-radius:30px;
-
-border:1px solid #D4AF37;
-
-text-align:center;
-
-position:relative;
-}
-
-.popup-box h1{
-
-font-size:70px;
-
-color:#D4AF37;
-}
-
-.popup-box p{
-
-font-size:32px;
-
-line-height:1.8;
-}
-
-.close{
-
-position:absolute;
-
-top:15px;
-
-right:25px;
-
-font-size:40px;
-
-cursor:pointer;
-}
-
-/* HP */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:40px;
-}
-
-.hero h2{
-font-size:55px;
-}
-
-.hero p{
-font-size:22px;
-}
-
-.title{
-font-size:45px;
-}
-
-.timeline{
-font-size:24px;
-}
-
-.track img{
-height:450px;
-}
-
-.letter{
-padding:35px;
-}
-
-.letter p{
-font-size:22px;
-}
-
-footer h1{
-font-size:55px;
-}
-
-footer p{
-font-size:24px;
-}
-
-.popup-box h1{
-font-size:40px;
-}
-
-.popup-box p{
-font-size:22px;
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="stars"></div>
-
-<!-- Hero -->
-
-<div class="hero">
-
-<h1>A LIFE WELL LOVED</h1>
-
-<h2>Kak Kharisma Kaur</h2>
-
-<p>
-
-18 June 2003 ❤️
-
-23 years of being extraordinary.
-
-</p>
-
-</div>
-
-<!-- Timeline -->
-
-<section>
-
-<div class="title">
-
-✨ Chapter 23
-
-</div>
-
-<div class="timeline">
-
-2003 • A beautiful soul was born.
-
-<br><br>
-
-2021 • A proud graduation moment.
-
-<br><br>
-
-2026 • Still shining beautifully.
-
-</div>
-
-</section>
-
-<!-- Slider -->
-
-<section>
-
-<div class="title">
-
-📸 Beautiful Memories
-
-</div>
-
-<div class="slider">
-
-<div class="track"
-
-id="track">
-
-<img src="foto1.jpg">
-
-<img src="foto2.jpg">
-
-<img src="foto3.jpg">
-
-<img src="foto4.jpg">
-
-<img src="foto5.jpg">
-
-<img src="foto6.jpg">
-
-<img src="foto7.jpg">
-
-<img src="foto8.jpg">
-
-<img src="foto9.jpg">
-
-<img src="foto10.jpg">
-
-<img src="foto11.jpg">
-  
-</div>
-
-</div>
-
-</section>
-
-<!-- Letter -->
-
-<section>
-
-<div class="letter">
-
-<div class="title">
-
-💌 A Letter For You
-
-</div>
-
-<p>
-
-Untuk Kak Kharisma,
-
-<br><br>
-
-23 tahun yang lalu, semesta menghadirkan seseorang yang luar biasa.
-
-Terima kasih sudah menjadi pribadi yang hangat, elegan, dan menginspirasi.
-
-Semoga setiap langkahmu dipenuhi kebahagiaan.
-
-Semoga segala hal baik selalu menemukan jalan menuju dirimu.
-
-Semoga kehidupan memperlakukanmu dengan lembut.
-
-Dan semoga orang-orang yang kamu sayangi selalu ada di dekatmu.
-
-❤️✨
-
-<br><br>
-
-Selamat ulang tahun.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- Footer -->
-
-<footer>
-
-<h1>23</h1>
-
-<p>
-
-There will never be another version of you.
-
-🤍
-
-</p>
-
-</footer>
-
-<!-- Popup -->
-
-<div class="popup"
-
-id="popup">
-
-<div class="popup-box">
-
-<div class="close"
-
-onclick="closePopup()">
-
-✕
-
-</div>
-
-<h1>
-
-🎂 Happy Birthday
-
-</h1>
-
-<br>
-
-<p>
-
-Kak Kharisma Kaur ❤️
-
-<br><br>
-
-Stay happy.
-
-Stay healthy.
-
-Stay amazing.
-
-✨
-
-</p>
-
-</div>
-
-</div>
-
-<script>
-
-setTimeout(()=>{
-
-document
-
-.getElementById('popup')
-
-.classList.add('show');
-
-},2000);
-
-function closePopup(){
-
-document
-
-.getElementById('popup')
-
-.classList.remove('show');
-
-}
-
-let index=0;
-
-const track=
-
-document.getElementById('track');
-
-const total=
-
-track.children.length;
-
-setInterval(()=>{
-
-index++;
-
-if(index>=total){
-
-index=0;
-
-}
-
-track.style.transform=
-
-`translateX(-${index*100}%)`;
-
-},3500);
-
-</script>
-
-</body>
-
-</html><!DOCTYPE html>
-<html lang="id">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Happy 23rd Birthday | Kak Kharisma Kaur</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-body{
-
-background:#080808;
-
-font-family:'Cormorant Garamond',serif;
-
-color:white;
-
-overflow-x:hidden;
-}
-
-/* Background */
-
-.stars{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:
-radial-gradient(circle,#fff 1px,transparent 1px);
-
-background-size:45px 45px;
-
-opacity:.15;
-
-pointer-events:none;
-
-animation:move 120s linear infinite;
-}
-
-@keyframes move{
-
-100%{
-transform:translateY(-1000px);
-}
-
-}
-
-/* Hero */
-
-.hero{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-padding:30px;
-
-text-align:center;
-}
-
-.hero h1{
-
-font-size:80px;
-
-letter-spacing:8px;
-
-color:#D4AF37;
-}
-
-.hero h2{
-
-font-size:90px;
-
-font-family:'Great Vibes';
-
-margin:25px 0;
-}
-
-.hero p{
-
-font-size:28px;
-
-max-width:900px;
-
-line-height:1.8;
-}
-
-/* Section */
-
-section{
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-padding:60px;
-}
-
-.title{
-
-font-size:70px;
-
-color:#D4AF37;
-
-margin-bottom:40px;
-}
-
-/* Timeline */
-
-.timeline{
-
-max-width:900px;
-
-font-size:32px;
-
-line-height:2;
-
-text-align:center;
-}
-
-/* Slider */
-
-.slider{
-
-width:100%;
-
-max-width:1000px;
-
-overflow:hidden;
-}
-
-.track{
-
-display:flex;
-
-transition:1s;
-}
-
-.track img{
-
-width:100%;
-
-height:650px;
-
-flex-shrink:0;
-
-object-fit:cover;
-
-border-radius:25px;
-}
-
-/* Letter */
-
-.letter{
-
-max-width:1000px;
-
-padding:60px;
-
-background:#111;
-
-border-radius:30px;
-
-border:1px solid #D4AF37;
-}
-
-.letter p{
-
-font-size:30px;
-
-line-height:2;
-}
-
-/* Footer */
-
-footer{
-
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-text-align:center;
-
 padding:40px;
-}
-
-footer h1{
-
-font-size:120px;
-
-color:#D4AF37;
-}
-
-footer p{
-
-font-size:40px;
-
-margin-top:30px;
-}
-
-/* Popup */
-
-.popup{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:auto;
-
-display:block;
-
-justify-content:center;
-
-align-items:center;
-
-background:rgba(0,0,0,.95);
-
-z-index:9999;
-
-opacity:0;
-
-visibility:hidden;
-
-transition:.7s;
-}
-
-.popup.show{
-
-opacity:1;
-
-visibility:visible;
-}
-
-.popup-box{
-
-max-width:800px;
-
-width:90%;
-
-background:#111;
-
-padding:60px;
-
-border-radius:30px;
-
-border:1px solid #D4AF37;
-
+border-radius:20px;
 text-align:center;
-
-position:relative;
+border:1px solid #D4AF37;
 }
 
-.popup-box h1{
+/* MUSIC */
+audio{display:none;}
 
-font-size:70px;
-
-color:#D4AF37;
-}
-
-.popup-box p{
-
-font-size:32px;
-
-line-height:1.8;
-}
-
-.close{
-
-position:absolute;
-
-top:15px;
-
-right:25px;
-
-font-size:40px;
-
-cursor:pointer;
-}
-
-/* HP */
-
+/* MOBILE */
 @media(max-width:768px){
-
-.hero h1{
-font-size:40px;
-}
-
-.hero h2{
-font-size:55px;
-}
-
-.hero p{
-font-size:22px;
-}
-
-.title{
-font-size:45px;
-}
-
-.timeline{
-font-size:24px;
-}
-
-.track img{
-height:450px;
-}
-
-.letter{
-padding:35px;
-}
-
-.letter p{
-font-size:22px;
-}
-
-footer h1{
-font-size:55px;
-}
-
-footer p{
-font-size:24px;
-}
-
-.popup-box h1{
-font-size:40px;
-}
-
-.popup-box p{
-font-size:22px;
-}
-
+.hero h1{font-size:35px}
+.hero h2{font-size:45px}
+.track img{height:320px}
+.box p{font-size:17px}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<div class="stars"></div>
-
-<!-- Hero -->
-
+<!-- HERO -->
 <div class="hero">
-
 <h1>A LIFE WELL LOVED</h1>
-
 <h2>Kak Kharisma Kaur</h2>
-
-<p>
-
-18 June 2003 ❤️
-
-23 years of being extraordinary.
-
-</p>
-
+<p>18 June 2003 ❤️ 23 years of being extraordinary</p>
 </div>
 
-<!-- Timeline -->
-
+<!-- CHAPTER -->
 <section>
-
-<div class="title">
-
-✨ Chapter 23
-
-</div>
-
-<div class="timeline">
-
-2003 • A beautiful soul was born.
-
-<br><br>
-
-2021 • A proud graduation moment.
-
-<br><br>
-
+<div class="title">✨ Chapter 23</div>
+<div style="text-align:center;font-size:20px;line-height:2">
+2003 • A beautiful soul was born.<br><br>
+2021 • A proud graduation moment.<br><br>
 2026 • Still shining beautifully.
-
 </div>
-
 </section>
 
-<!-- Slider -->
-
+<!-- MEMORIES -->
 <section>
-
-<div class="title">
-
-📸 Beautiful Memories
-
-</div>
+<div class="title">📸 Beautiful Memories</div>
 
 <div class="slider">
-
-<div class="track"
-
-id="track">
-
+<div class="track" id="track">
 <img src="foto1.jpg">
-
 <img src="foto2.jpg">
-
 <img src="foto3.jpg">
-
 <img src="foto4.jpg">
-
 <img src="foto5.jpg">
-
 <img src="foto6.jpg">
-
 <img src="foto7.jpg">
-
 <img src="foto8.jpg">
-
 </div>
-
 </div>
-
 </section>
 
-<!-- Letter -->
-
+<!-- LETTER (FULL + SEMESTA + INSPIRASI) -->
 <section>
+<div class="title">💌 A Letter For You</div>
 
-<div class="letter">
-
-<div class="title">
-
-💌 A Letter For You
-
-</div>
-
+<div class="box">
 <p>
+Untuk Kak Kharisma,<br><br>
 
-Untuk Kak Kharisma,
+Di antara luasnya semesta, kamu adalah salah satu bukti bahwa hal indah benar-benar diciptakan dengan penuh makna.<br><br>
 
-<br><br>
+Kamu mungkin tidak selalu menyadarinya, tapi keberadaanmu sudah menjadi cahaya bagi banyak orang di sekitarmu. Cara kamu bersikap, cara kamu bertahan, dan cara kamu tetap lembut di dunia yang tidak selalu mudah—itu semua menginspirasi lebih banyak orang daripada yang bisa kamu bayangkan.<br><br>
 
-23 tahun yang lalu, semesta menghadirkan seseorang yang luar biasa.
+Semesta seperti sedang mengajarkan bahwa tidak semua bintang harus bersinar paling terang untuk bisa berarti. Ada bintang yang cukup hadir saja, dan sudah membuat langit terasa lebih hidup—seperti kamu.<br><br>
 
-Terima kasih sudah menjadi pribadi yang hangat, elegan, dan menginspirasi.
+Semoga kamu selalu diberi jalan yang tenang, hati yang kuat, dan mimpi yang pelan-pelan menjadi nyata tanpa harus terburu-buru.<br><br>
 
-Semoga setiap langkahmu dipenuhi kebahagiaan.
+Dan ketika kamu merasa lelah, ingatlah bahwa bahkan semesta pun punya jeda malam sebelum kembali menghadirkan pagi yang baru.<br><br>
 
-Semoga segala hal baik selalu menemukan jalan menuju dirimu.
+Terima kasih sudah menjadi bagian dari dunia ini.<br>
+Terima kasih sudah menginspirasi banyak orang tanpa harus berusaha menjadi siapa pun selain dirimu sendiri.<br><br>
 
-Semoga kehidupan memperlakukanmu dengan lembut.
-
-Dan semoga orang-orang yang kamu sayangi selalu ada di dekatmu.
-
-❤️✨
-
-<br><br>
-
-Selamat ulang tahun.
-
+❤️✨ Selamat ulang tahun.
 </p>
-
 </div>
-
 </section>
 
-<!-- Footer -->
-
-<footer>
-
+<!-- FOOTER -->
+<div class="footer">
 <h1>23</h1>
+<p>There will never be another version of you 🤍</p>
+</div>
 
-<p>
-
-There will never be another version of you.
-
-🤍
-
-</p>
-
-</footer>
-
-<!-- Popup -->
-
-<div class="popup"
-
-id="popup">
-
+<!-- POPUP -->
+<div class="popup" id="popup">
 <div class="popup-box">
-
-<div class="close"
-
-onclick="closePopup()">
-
-✕
-
+<h2>🎂 Happy Birthday</h2>
+<p>Kak Kharisma Kaur ❤️</p>
+</div>
 </div>
 
-<h1>
-
-🎂 Happy Birthday
-
-</h1>
-
-<br>
-
-<p>
-
-Kak Kharisma Kaur ❤️
-
-<br><br>
-
-Stay happy.
-
-Stay healthy.
-
-Stay amazing.
-
-✨
-
-</p>
-
-</div>
-
-</div>
-<!-- Musik -->
-<audio id="bgm" loop>
-    <source src="musik.mp3" type="audio/mpeg">
+<!-- MUSIC (AUTO + FALLBACK IOS) -->
+<audio id="bgm" loop preload="auto">
+<source src="musik.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-document.addEventListener("click", function () {
-    document.getElementById("bgm").play();
-}, { once: true });
-</script>
 
-<script>
-setTimeout(() => {
+/* POPUP */
+setTimeout(()=>{
+document.getElementById("popup").classList.add("show");
+},2000);
 
-document
-.getElementById('popup')
-.classList.add('show');
+/* SLIDER */
+let i=0;
+const track=document.getElementById("track");
 
-}, 2000);
+setInterval(()=>{
+i=(i+1)%track.children.length;
+track.style.transform=`translateX(-${i*100}%)`;
+},3500);
 
-function closePopup() {
+/* 🎵 AUTO MUSIC (iOS SAFE TRICK) */
+const audio=document.getElementById("bgm");
 
-document
-.getElementById('popup')
-.classList.remove('show');
-
+function playMusic(){
+audio.volume=0;
+audio.play().then(()=>{
+let v=0;
+let fade=setInterval(()=>{
+v+=0.05;
+audio.volume=v;
+if(v>=1) clearInterval(fade);
+},120);
+}).catch(()=>{});
 }
 
-let index = 0;
+/* coba autoplay */
+window.addEventListener("load",playMusic);
 
-const track =
-document.getElementById('track');
-
-const total =
-track.children.length;
-
-setInterval(() => {
-
-index++;
-
-if (index >= total) {
-
-index = 0;
-
-}
-
-track.style.transform =
-`translateX(-${index*100}%)`;
-
-}, 3500);
+/* fallback iOS (WAJIB) */
+document.addEventListener("touchstart",playMusic,{once:true});
+document.addEventListener("click",playMusic,{once:true});
+document.addEventListener("scroll",playMusic,{once:true});
 
 </script>
 
 </body>
-
 </html>
