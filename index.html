@@ -1,328 +1,731 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Happy 23rd Birthday</title>
+<title>Happy 23rd Birthday | Kak Kharisma Kaur</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* 🌙 BACKGROUND */
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:'Cormorant Garamond',serif;
 color:white;
 overflow-x:hidden;
 
-background: radial-gradient(circle at top,
-#1b2140 0%,
-#0b0f1f 45%,
-#05060f 100%);
-}
-
-/* glow aurora */
-body::before{
-content:"";
-position:fixed;
-inset:0;
 background:
-radial-gradient(circle at 20% 20%, rgba(120,120,255,.18), transparent 50%),
-radial-gradient(circle at 80% 70%, rgba(255,150,255,.10), transparent 55%);
-animation:moveGlow 10s infinite alternate;
-pointer-events:none;
+radial-gradient(circle at top,#25305a 0%,#111827 40%,#06070d 100%);
 }
 
-@keyframes moveGlow{
-from{transform:scale(1);}
-to{transform:scale(1.1) translateY(-10px);}
+/* aurora */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at 20% 20%, rgba(120,120,255,.18), transparent 50%),
+
+radial-gradient(circle at 80% 70%, rgba(255,150,255,.12), transparent 55%),
+
+radial-gradient(circle at 50% 90%, rgba(120,255,255,.08), transparent 60%);
+
+animation:aurora 12s infinite alternate;
+
+pointer-events:none;
+
+z-index:-1;
+
+}
+
+@keyframes aurora{
+
+from{
+
+transform:scale(1);
+
+}
+
+to{
+
+transform:scale(1.1) translateY(-20px);
+
+}
+
 }
 
 /* HERO */
+
 .hero{
+
 height:100vh;
+
 display:flex;
+
 flex-direction:column;
+
 justify-content:center;
+
 align-items:center;
+
 text-align:center;
+
 padding:20px;
+
 }
 
 .hero h1{
+
 font-size:55px;
+
 color:#D4AF37;
+
 letter-spacing:5px;
+
 }
 
 .hero h2{
-font-size:70px;
+
+font-size:75px;
+
 font-family:'Great Vibes';
+
 margin:20px 0;
+
 }
 
 .hero p{
-font-size:20px;
+
+font-size:24px;
+
 color:#ddd;
+
 }
 
 /* SECTION */
+
 section{
+
 min-height:100vh;
+
 display:flex;
+
 flex-direction:column;
+
 justify-content:center;
+
 align-items:center;
-padding:50px 20px;
+
+padding:60px 20px;
+
 }
 
 .title{
-font-size:42px;
+
+font-size:45px;
+
 color:#D4AF37;
-margin-bottom:30px;
+
+margin-bottom:35px;
+
 text-align:center;
+
 }
 
-/* SLIDER */
+/* chapter */
+
+.chapter{
+
+font-size:22px;
+
+line-height:2;
+
+text-align:center;
+
+}
+
+/* slider */
+
 .slider{
+
 width:100%;
-max-width:850px;
+
+max-width:900px;
+
 overflow:hidden;
-border-radius:20px;
+
+border-radius:25px;
+
 }
 
 .track{
+
 display:flex;
+
 transition:1s ease;
+
 }
 
 .track img{
+
 width:100%;
-height:520px;
+
+height:600px;
+
 flex-shrink:0;
+
 object-fit:contain;
-background:#000;
-border-radius:20px;
+
+object-position:center;
+
+border-radius:25px;
+
 }
 
-/* LETTER */
+/* letter */
+
 .box{
-max-width:850px;
-background:rgba(0,0,0,.4);
+
+max-width:900px;
+
+background:rgba(0,0,0,.35);
+
 backdrop-filter:blur(10px);
-padding:40px;
-border-radius:20px;
+
+padding:45px;
+
+border-radius:25px;
+
 border:1px solid rgba(212,175,55,.4);
+
 }
 
 .box p{
-font-size:20px;
-line-height:1.9;
+
+font-size:22px;
+
+line-height:2;
+
 }
 
-/* FOOTER */
+/* footer */
+
 .footer{
+
 text-align:center;
-padding:80px 20px;
+
+padding:120px 20px;
+
 }
 
 .footer h1{
-font-size:70px;
+
+font-size:100px;
+
 color:#D4AF37;
+
 }
 
-/* POPUP FIX FINAL (WORKING 100%) */
+.footer p{
+
+font-size:28px;
+
+margin-top:20px;
+
+}
+
+/* popup */
+
 .popup{
+
 position:fixed;
+
 inset:0;
-display:flex;
+
+display:none;
+
 justify-content:center;
+
 align-items:center;
+
 background:rgba(0,0,0,.45);
+
 backdrop-filter:blur(6px);
 
-opacity:0;
-visibility:hidden;
-transition:.6s ease;
 z-index:9999;
+
+opacity:0;
+
+transition:.6s;
+
 }
 
 .popup.show{
+
+display:flex;
+
 opacity:1;
-visibility:visible;
+
 }
 
 .popup-box{
-background:rgba(17,17,17,.9);
-padding:40px;
-border-radius:20px;
-text-align:center;
-border:1px solid #D4AF37;
-max-width:500px;
-width:90%;
+
 position:relative;
+
+background:rgba(17,17,17,.95);
+
+padding:45px;
+
+border-radius:25px;
+
+border:1px solid #D4AF37;
+
+text-align:center;
+
+width:90%;
+
+max-width:500px;
+
 }
 
-/* tombol close */
-.close{
-position:absolute;
-top:10px;
-right:15px;
+.popup-box h2{
+
+font-size:42px;
+
+color:#D4AF37;
+
+margin-bottom:20px;
+
+}
+
+.popup-box p{
+
 font-size:24px;
-cursor:pointer;
-color:white;
+
+line-height:1.8;
+
 }
 
-/* MUSIC */
-audio{display:none;}
+.close{
 
-/* MOBILE */
+position:absolute;
+
+top:10px;
+
+right:20px;
+
+font-size:28px;
+
+cursor:pointer;
+
+}
+
+/* mobile */
+
 @media(max-width:768px){
-.hero h1{font-size:35px}
-.hero h2{font-size:45px}
-.track img{height:320px}
-.box p{font-size:17px}
+
+.hero h1{
+
+font-size:35px;
+
+}
+
+.hero h2{
+
+font-size:55px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.title{
+
+font-size:35px;
+
+}
+
+.track img{
+
+height:420px;
+
+}
+
+.box{
+
+padding:30px;
+
+}
+
+.box p{
+
+font-size:18px;
+
+}
+
+.footer h1{
+
+font-size:60px;
+
+}
+
+.footer p{
+
+font-size:22px;
+
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- HERO -->
+
 <div class="hero">
+
 <h1>A LIFE WELL LOVED</h1>
+
 <h2>Kak Kharisma Kaur</h2>
-<p>18 June 2003 ❤️ 23 years of being extraordinary</p>
+
+<p>
+
+18 June 2003 ❤️
+
+23 years of being extraordinary.
+
+</p>
+
 </div>
 
 <!-- CHAPTER -->
+
 <section>
-<div class="title">✨ Chapter 23</div>
-<div style="text-align:center;font-size:20px;line-height:2">
-2003 • A beautiful soul was born.<br><br>
-2021 • A proud graduation moment.<br><br>
-2026 • Still shining beautifully.
+
+<div class="title">
+
+✨ Chapter 23
+
 </div>
+
+<div class="chapter">
+
+2003 • A beautiful soul was born.
+
+<br><br>
+
+2021 • A proud graduation moment.
+
+<br><br>
+
+2026 • Still shining beautifully.
+
+</div>
+
 </section>
 
 <!-- MEMORIES -->
+
 <section>
-<div class="title">📸 Beautiful Memories</div>
+
+<div class="title">
+
+📸 Beautiful Memories
+
+</div>
 
 <div class="slider">
+
 <div class="track" id="track">
+
 <img src="foto1.jpg">
+
 <img src="foto2.jpg">
+
 <img src="foto3.jpg">
+
 <img src="foto4.jpg">
+
 <img src="foto5.jpg">
+
 <img src="foto6.jpg">
+
 <img src="foto7.jpg">
+
 <img src="foto8.jpg">
+
 </div>
+
 </div>
+
 </section>
 
 <!-- LETTER -->
+
 <section>
-<div class="title">💌 A Letter For You</div>
+
+<div class="title">
+
+💌 A Letter For You
+
+</div>
 
 <div class="box">
+
 <p>
-Untuk Kak Kharisma,<br><br>
 
-Di antara luasnya semesta, kamu adalah salah satu bukti bahwa hal indah benar-benar diciptakan dengan penuh makna.<br><br>
+Untuk Kak Kharisma,
 
-Kamu menjadi cahaya bagi banyak orang tanpa harus berusaha menjadi siapa pun selain dirimu sendiri.<br>
-Semesta seperti sedang berkata bahwa tidak semua bintang harus paling terang untuk berarti—cukup hadir, dan sudah membuat langit lebih indah.<br><br>
+<br><br>
 
-Semoga kamu selalu diberi jalan yang lembut, hati yang kuat, dan hidup yang pelan-pelan selalu menemukan kebaikannya sendiri.<br><br>
+23 tahun yang lalu, semesta menghadirkan seseorang yang luar biasa.
 
-Terima kasih sudah menginspirasi banyak orang.<br><br>
+Terima kasih sudah menjadi pribadi yang hangat, elegan, dan menginspirasi.
 
-❤️✨ Selamat ulang tahun.
+<br><br>
+
+Di antara banyaknya perjalanan hidup, semesta seolah sengaja menghadirkan kamu sebagai salah satu karya terbaiknya.
+
+Kamu bukan hanya tumbuh menjadi pribadi yang kuat dan lembut sekaligus, tapi juga menjadi seseorang yang tanpa sadar menginspirasi banyak orang di sekitarmu.
+
+<br><br>
+
+Cara kamu bersikap, cara kamu bertahan, dan cara kamu tetap hangat di dunia yang kadang tidak selalu lembut, itu semua memberi dampak yang jauh lebih besar daripada yang mungkin kamu sadari.
+
+<br><br>
+
+Semesta seperti sedang berkata bahwa tidak semua cahaya harus bersuara keras untuk bisa terlihat.
+
+Ada cahaya seperti kamu, tenang, dalam, sederhana, tetapi mampu menghangatkan banyak hati.
+
+<br><br>
+
+Terima kasih karena sudah menjadi seseorang yang membuat orang lain merasa nyaman, didengar, dan dihargai hanya dengan menjadi dirimu sendiri.
+
+Kehadiranmu mungkin terlihat biasa bagimu, tetapi bagi banyak orang, kehadiranmu membuat hari-hari terasa lebih baik.
+
+<br><br>
+
+Semoga di usia yang baru ini, kamu semakin mengenal dirimu sendiri.
+
+Semakin dekat dengan hal-hal yang kamu impikan.
+
+Semakin percaya bahwa kamu layak mendapatkan semua hal baik yang pernah kamu doakan diam-diam.
+
+<br><br>
+
+Semoga setiap langkahmu dipenuhi kebahagiaan.
+
+Semoga segala hal baik selalu menemukan jalan menuju dirimu.
+
+Semoga kehidupan memperlakukanmu dengan lembut.
+
+Semoga kesehatan, ketenangan, dan kebahagiaan selalu menyertaimu.
+
+Semoga orang-orang yang kamu sayangi selalu ada di dekatmu.
+
+<br><br>
+
+Ketika kamu merasa lelah, ingatlah bahwa bahkan semesta pun punya jeda malam untuk beristirahat sebelum kembali bersinar di pagi hari.
+
+<br><br>
+
+Terima kasih sudah menjadi bagian dari dunia ini.
+
+Terima kasih sudah menginspirasi banyak orang tanpa perlu berusaha menjadi siapa pun selain dirimu sendiri.
+
+<br><br>
+
+Karena sesungguhnya, tidak akan pernah ada versi lain yang bisa menggantikan dirimu.
+
+Dan dunia akan selalu sedikit lebih indah karena kehadiranmu.
+
+<br><br>
+
+❤️✨ Selamat ulang tahun, Kak Kharisma.
+
 </p>
+
 </div>
+
 </section>
 
 <!-- FOOTER -->
+
 <div class="footer">
+
 <h1>23</h1>
-<p>There will never be another version of you 🤍</p>
+
+<p>
+
+There will never be another version of you 🤍
+
+</p>
+
 </div>
 
 <!-- POPUP -->
+
 <div class="popup" id="popup">
 
 <div class="popup-box">
 
-<div class="close" onclick="closePopup()">✕</div>
+<div class="close">✕</div>
 
 <h2>🎂 Happy Birthday</h2>
-<p>Kak Kharisma Kaur ❤️</p>
+
+<p>
+
+Kak Kharisma Kaur ❤️
+
+<br><br>
+
+Stay happy.
+
+<br>
+
+Stay healthy.
+
+<br>
+
+Stay amazing.
+
+✨
+
+</p>
 
 </div>
 
 </div>
 
 <!-- MUSIC -->
+
 <audio id="bgm" loop preload="auto">
+
 <source src="musik.mp3" type="audio/mpeg">
+
 </audio>
 
 <script>
 
-/* POPUP */
+/* popup */
+
 const popup=document.getElementById("popup");
 
+const closeBtn=document.querySelector(".close");
+
 setTimeout(()=>{
+
+popup.style.display="flex";
+
+setTimeout(()=>{
+
 popup.classList.add("show");
+
+},50);
+
 },2000);
 
 function closePopup(){
+
 popup.classList.remove("show");
+
+setTimeout(()=>{
+
+popup.style.display="none";
+
+},500);
+
 }
 
-/* klik luar popup = close (FIX FINAL) */
+closeBtn.addEventListener("click",closePopup);
+
 popup.addEventListener("click",(e)=>{
+
 if(e.target===popup){
+
 closePopup();
+
 }
+
 });
 
-/* SLIDER */
+/* slider */
+
 let i=0;
+
 const track=document.getElementById("track");
 
 setInterval(()=>{
+
 i=(i+1)%track.children.length;
+
 track.style.transform=`translateX(-${i*100}%)`;
+
 },3500);
 
-/* MUSIC AUTO PLAY (iOS SAFE) */
+/* music */
+
 const audio=document.getElementById("bgm");
 
 function playMusic(){
+
 audio.volume=0;
+
 audio.play().then(()=>{
+
 let v=0;
+
 let fade=setInterval(()=>{
+
 v+=0.05;
+
 audio.volume=v;
-if(v>=1) clearInterval(fade);
+
+if(v>=1){
+
+clearInterval(fade);
+
+}
+
 },120);
+
 }).catch(()=>{});
+
 }
 
 window.addEventListener("load",playMusic);
+
 document.addEventListener("touchstart",playMusic,{once:true});
+
 document.addEventListener("click",playMusic,{once:true});
+
 document.addEventListener("scroll",playMusic,{once:true});
 
 </script>
 
 </body>
+
 </html>
