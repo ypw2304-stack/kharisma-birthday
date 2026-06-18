@@ -133,15 +133,13 @@ font-size:70px;
 color:#D4AF37;
 }
 
-/* POPUP FIX FINAL */
+/* POPUP FIX FINAL (WORKING 100%) */
 .popup{
 position:fixed;
 inset:0;
 display:flex;
 justify-content:center;
 align-items:center;
-
-/* soft, tidak nutup total */
 background:rgba(0,0,0,.45);
 backdrop-filter:blur(6px);
 
@@ -157,7 +155,7 @@ visibility:visible;
 }
 
 .popup-box{
-background:rgba(17,17,17,.85);
+background:rgba(17,17,17,.9);
 padding:40px;
 border-radius:20px;
 text-align:center;
@@ -167,12 +165,14 @@ width:90%;
 position:relative;
 }
 
+/* tombol close */
 .close{
 position:absolute;
 top:10px;
 right:15px;
 font-size:24px;
 cursor:pointer;
+color:white;
 }
 
 /* MUSIC */
@@ -256,11 +256,16 @@ Terima kasih sudah menginspirasi banyak orang.<br><br>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
+
 <div class="popup-box">
+
 <div class="close" onclick="closePopup()">✕</div>
+
 <h2>🎂 Happy Birthday</h2>
 <p>Kak Kharisma Kaur ❤️</p>
+
 </div>
+
 </div>
 
 <!-- MUSIC -->
@@ -271,17 +276,19 @@ Terima kasih sudah menginspirasi banyak orang.<br><br>
 <script>
 
 /* POPUP */
+const popup=document.getElementById("popup");
+
 setTimeout(()=>{
-document.getElementById("popup").classList.add("show");
+popup.classList.add("show");
 },2000);
 
 function closePopup(){
-document.getElementById("popup").classList.remove("show");
+popup.classList.remove("show");
 }
 
-/* klik luar popup untuk close */
-document.getElementById("popup").addEventListener("click",(e)=>{
-if(e.target.id==="popup"){
+/* klik luar popup = close (FIX FINAL) */
+popup.addEventListener("click",(e)=>{
+if(e.target===popup){
 closePopup();
 }
 });
@@ -295,7 +302,7 @@ i=(i+1)%track.children.length;
 track.style.transform=`translateX(-${i*100}%)`;
 },3500);
 
-/* 🎵 MUSIC AUTO (iOS SAFE) */
+/* MUSIC AUTO PLAY (iOS SAFE) */
 const audio=document.getElementById("bgm");
 
 function playMusic(){
